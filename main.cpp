@@ -4,7 +4,7 @@
 #include "uInterface.h"
 
 int main() {
-	unsigned int antialias = 8;
+	unsigned int antialias = 32;
 
 	sf::RenderWindow app(sf::VideoMode(800, 600), "Connect Four",
 			sf::Style::Resize | sf::Style::Close, sf::ContextSettings(24, 8, antialias));

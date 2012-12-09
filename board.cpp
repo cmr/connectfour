@@ -10,8 +10,8 @@ Board::Board::Board(sf::RenderWindow& app) : myWindow(app) {
 	lineColor = sf::Color(0, 51, 102);
 	highlightColor = sf::Color(255, 153, 0);
 
-	windowHeight = myWindow.getSize().x;
-	windowWidth = myWindow.getSize().y;
+	windowHeight = myWindow.getSize().y;
+	windowWidth = myWindow.getSize().x;
 
 	if(windowHeight < windowWidth)
 		radius = windowHeight/(X_SIZE * 2.0);
@@ -44,6 +44,7 @@ void Board::Board::restart() {
 }
 
 void Board::Board::draw() {
+	myWindow.clear(boardColor);
 	for(int y = 1; y <= Y_SIZE; y++) {
 		float centerY = (spaceY+radius)*y + radius*(y-1);
 
@@ -70,7 +71,7 @@ void Board::Board::draw() {
 
 			sf::CircleShape circle;
 			circle.setRadius(radius);
-			circle.setOrigin(centerX, centerY);
+			circle.setPosition(centerX, centerY);
 			circle.setFillColor(fillColor);
 			circle.setOutlineColor(outlineColor);
 			circle.setOutlineThickness(outline);
@@ -112,9 +113,12 @@ bool Board::Board::fourHorizontal(unsigned int x, unsigned int y) {
 		while(board[y][++i] == tokenColor) {
 			boardOutline[y][i] = Highlight;
 		}
+		return true;
 	} else {
 		return false;
 	}
+
+	return false;
 }
 
 bool Board::Board::fourVertical(unsigned int x, unsigned int y) {
@@ -162,7 +166,7 @@ bool Board::Board::fourDiagonal(unsigned int x, unsigned int y) {
 
 	if(cnt >= 4) {
 		while(board[++i][++j] == tokenColor) {
-			boardOutline[i][j] = Highlight;;
+			boardOutline[i][j] = Highlight;
 		}
 		return true;
 	} else {
