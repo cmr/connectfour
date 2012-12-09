@@ -1,7 +1,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include "board.h"
-#include "uInterface.cpp"
+#include "uInterface.h"
 
 int main() {
 	unsigned int antialias = 8;
@@ -25,7 +25,7 @@ int main() {
 		}
 
 		app.clear();
-
+		board.draw();
 		app.display();
 	}
 

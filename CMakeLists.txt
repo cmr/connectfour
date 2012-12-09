@@ -5,7 +5,7 @@ set(cf_sources board.cpp uInterface.cpp main.cpp)
 
 add_executable(connectfour ${cf_sources})
 
-set(CMAKE_CXX_FLAGS "-std=c++11 -v")
+set(CMAKE_CXX_FLAGS "-std=c++11")
 
 find_package(SFML 2 COMPONENTS graphics system window REQUIRED)
 
